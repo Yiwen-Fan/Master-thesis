@@ -1,0 +1,423 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\Even\Desktop\修論STATA\panel data 2011-2015_0530\panel_regression_0617.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}17 Jun 2020, 22:10:01
+{txt}
+{com}. 
+. 
+. use append_0530_3
+{txt}(Constructed Children Data for CHARLS Wave 1)
+
+{com}. sort householdid year
+{txt}
+{com}. xtset householdid year
+{res}{txt}{col 8}panel variable:  {res}householdid (strongly balanced)
+{txt}{col 9}time variable:  {res}{col 25}year, 2011 to 2015, but with gaps
+{txt}{col 17}delta:  {res}1 unit
+{txt}
+{com}. 
+. 
+. recast double ave_inc 
+{txt}
+{com}. recast double allreceive_total
+{txt}
+{com}. recast double nettrsf
+{txt}
+{com}. recast double allincome
+{txt}
+{com}. recast double spouse_allincome
+{txt}
+{com}. recast double mari_status
+{txt}
+{com}. recast double total_distance
+{txt}
+{com}. gen ave_visit=total_visit/liveapartnum
+{txt}(112 missing values generated)
+
+{com}. gen ave_contact=total_contact/liveapartnum
+{txt}(1,203 missing values generated)
+
+{com}. recast double ave_visit 
+{txt}
+{com}. recast double ave_contact
+{txt}
+{com}. 
+. 
+. xtsum householdid year allincome spouse_allincome indv_pension spouse_pension birthyear mari_status allreceive_total allgive_total nettrsf ave_mt max total_visit total_contact livewith total_distance liveapartnum totalincome ave_inc contact_num visit_num
+
+{txt}Variable         {c |}      Mean   Std. Dev.       Min        Max {c |}    Observations
+{hline 17}{c +}{hline 44}{c +}{hline 16}
+househ~d{col 10}overall {c |} {res} 1.79e+09   1.06e+09   1.01e+08   3.48e+09{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res} 1.06e+09   1.01e+08   3.48e+09{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res}        0   1.79e+09   1.79e+09{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+year{col 10}overall {c |} {res}     2013   1.633086       2011       2015{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res}        0       2013       2013{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 1.633086       2011       2015{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+allinc~e{col 10}overall {c |} {res} 3601.505   25234.05          0    1532000{txt} {c |}{col 69}N =    8424
+{col 10}between {c |}{col 31}{res} 16318.52          0   562833.3{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 18998.25  -524231.8   972768.2{txt} {c |} T-bar = 2.86823
+{col 18}{c |}{col 63}{c |}
+spouse~e{col 10}overall {c |} {res} 3458.307   25140.07          0    1170000{txt} {c |}{col 69}N =    8555
+{col 10}between {c |}{col 31}{res} 16617.58          0   416933.3{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 18755.51    -380275     756525{txt} {c |} T-bar = 2.91284
+{col 18}{c |}{col 63}{c |}
+indv_p~n{col 10}overall {c |} {res} 1965.016   6562.984          0      73200{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res} 4897.772          0      47640{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 4369.214  -45674.98   44365.02{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+spouse~n{col 10}overall {c |} {res} 968.2971   4692.078          0      84000{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res}  2826.94          0   37833.33{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 3745.106  -32565.04    54968.3{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+birthy~r{col 10}overall {c |} {res} 1949.923   9.280403       1913       1995{txt} {c |}{col 69}N =    8756
+{col 10}between {c |}{col 31}{res}  9.23052       1917   1971.667{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 1.135415    1932.59    1984.59{txt} {c |} T-bar = 2.98127
+{col 18}{c |}{col 63}{c |}
+mari_s~s{col 10}overall {c |} {res} .8111452   .3914155          0          1{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res} .3738559          0          1{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} .1160584   .1444785   1.477812{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+allrec~l{col 10}overall {c |} {res} 4279.098   12459.71          0     515000{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res} 8528.562          0   221666.7{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 9084.298  -217387.6   297612.4{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+allgiv~l{col 10}overall {c |} {res} 2828.119   19473.11          0     800000{txt} {c |}{col 69}N =    8808
+{col 10}between {c |}{col 31}{res} 11994.57          0   266666.7{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res}  15340.1  -263838.5   536161.5{txt} {c |} T-bar = 2.99898
+{col 18}{c |}{col 63}{c |}
+nettrsf{col 10}overall {c |} {res} 1452.437   21853.27    -800000     277700{txt} {c |}{col 69}N =    8808
+{col 10}between {c |}{col 31}{res} 14000.06    -266000     132000{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 16789.61  -532547.6   269452.4{txt} {c |} T-bar = 2.99898
+{col 18}{c |}{col 63}{c |}
+ave_mt{col 10}overall {c |} {res} 2166.099   7011.132          0     257500{txt} {c |}{col 69}N =    7151
+{col 10}between {c |}{col 31}{res} 4908.926          0   135833.3{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 4841.523  -133667.2   123832.8{txt} {c |} T-bar =  2.4348
+{col 18}{c |}{col 63}{c |}
+max{col 10}overall {c |} {res} 2.330269   1.721827          0         10{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res} 1.231935   .3333333         10{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 1.203067  -4.003064   7.663602{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+total~it{col 10}overall {c |} {res}  228.277   299.1739          0       2972{txt} {c |}{col 69}N =    8699
+{col 10}between {c |}{col 31}{res} 254.9297          0   2107.333{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 156.4384  -1109.056   1564.277{txt} {c |} T-bar = 2.96187
+{col 18}{c |}{col 63}{c |}
+total~ct{col 10}overall {c |} {res} 138.8826    192.947          0       2555{txt} {c |}{col 69}N =    7608
+{col 10}between {c |}{col 31}{res} 169.2669          0       2190{txt} {c |}{col 69}n =    2921
+{col 10}within  {c |}{col 31}{res} 126.3683  -956.1174   1660.549{txt} {c |} T-bar = 2.60459
+{col 18}{c |}{col 63}{c |}
+livewith{col 10}overall {c |} {res} .3308365    .470541          0          1{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res} .3083162          0          1{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} .3554878  -.3358302   .9975031{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+total_~e{col 10}overall {c |} {res} 3.358189   1.988033          0         18{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res} 1.748412   .6666667   15.66667{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} .9465872  -2.975145   13.35819{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+liveap~m{col 10}overall {c |} {res} 2.349563   1.322612          1         10{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res} 1.149149          1   8.333333{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} .6550251   -2.98377   6.349563{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+totali~e{col 10}overall {c |} {res} 77645.91   79943.37          0    1000000{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res} 63268.16          0   688337.3{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 48877.31  -320679.4   557645.9{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+ave_inc{col 10}overall {c |} {res} 33608.62   29418.87          0     250000{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res}  22818.8          0   208333.3{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} 18571.23  -121391.4   190551.1{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+contac~m{col 10}overall {c |} {res} 2.155033   1.504674          0         10{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res} 1.245316          0   8.666667{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} .8447385  -2.511633   7.155033{txt} {c |}     T =       3
+{col 18}{c |}{col 63}{c |}
+visit_~m{col 10}overall {c |} {res} 2.720236   1.465819          0         10{txt} {c |}{col 69}N =    8811
+{col 10}between {c |}{col 31}{res} 1.353058   .6666667         10{txt} {c |}{col 69}n =    2937
+{col 10}within  {c |}{col 31}{res} .5641584  -1.279764   7.720236{txt} {c |}     T =       3
+
+{com}. 
+. gen d2013=0 
+{txt}
+{com}. replace d2013=1 if year==2013
+{txt}(2,937 real changes made)
+
+{com}. 
+. gen d2015=0
+{txt}
+{com}. replace d2015=1 if year==2015
+{txt}(2,937 real changes made)
+
+{com}. 
+. keep if liveapartnum==max
+{txt}(4,772 observations deleted)
+
+{com}. keep if max==visit_num
+{txt}(480 observations deleted)
+
+{com}. keep if visit_num==contact_num
+{txt}(1,750 observations deleted)
+
+{com}. 
+. //drop if allreceive_total==0
+. //drop if total_visit==0
+. 
+. 
+. egen parents_income=rowtotal(allincome spouse_allincome indv_pension spouse_pension)
+{txt}
+{com}. gen age=2019-birthyear
+{txt}(9 missing values generated)
+
+{com}. 
+. //
+. 
+. tobit allreceive_total totalincome allincome spouse_allincome indv_pension spouse_pension liveapartnum age d2013 d2015 total_distance, ll(0)
+{res}{txt}
+Refining starting values:
+
+Grid node 0:{space 3}log likelihood = {res:-16677.738}
+
+Fitting full model:
+{res}
+{txt}Iteration 0:{space 3}log likelihood = {res:-16677.738}  
+Iteration 1:{space 3}log likelihood = {res:-16663.795}  
+Iteration 2:{space 3}log likelihood = {res:-16663.618}  
+Iteration 3:{space 3}log likelihood = {res:-16663.618}  
+{res}
+{txt}Tobit regression{col 49}Number of obs{col 67}= {res}     1,696
+{txt}{col 49}   Uncensored    {col 67}= {res}     1,528
+{txt}Limits: lower = {res}0{txt}{col 49}   Left-censored {col 67}= {res}       168
+{txt}        upper = {res}+inf{txt}{col 49}   Right-censored{col 67}= {res}         0
+
+{txt}{col 49}LR chi2({res}10{txt}){col 67}= {res}    225.42
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-16663.618{txt}{col 49}Pseudo R2{col 67}= {res}    0.0067
+
+{txt}{hline 24}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       allreceive_total{col 25}{c |}      Coef.{col 37}   Std. Err.{col 49}      t{col 57}   P>|t|{col 65}     [95% Con{col 78}f. Interval]
+{hline 24}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}totalincome {c |}{col 25}{res}{space 2} .0470646{col 37}{space 2} .0045524{col 48}{space 1}   10.34{col 57}{space 3}0.000{col 65}{space 4} .0381357{col 78}{space 3} .0559935
+{txt}{space 14}allincome {c |}{col 25}{res}{space 2} .0047583{col 37}{space 2}  .006165{col 48}{space 1}    0.77{col 57}{space 3}0.440{col 65}{space 4}-.0073336{col 78}{space 3} .0168502
+{txt}{space 7}spouse_allincome {c |}{col 25}{res}{space 2}-.0152652{col 37}{space 2} .0145775{col 48}{space 1}   -1.05{col 57}{space 3}0.295{col 65}{space 4}-.0438571{col 78}{space 3} .0133267
+{txt}{space 11}indv_pension {c |}{col 25}{res}{space 2} .3795458{col 37}{space 2} .0561658{col 48}{space 1}    6.76{col 57}{space 3}0.000{col 65}{space 4} .2693838{col 78}{space 3} .4897078
+{txt}{space 9}spouse_pension {c |}{col 25}{res}{space 2}-.1336928{col 37}{space 2} .0741318{col 48}{space 1}   -1.80{col 57}{space 3}0.071{col 65}{space 4}-.2790929{col 78}{space 3} .0117073
+{txt}{space 11}liveapartnum {c |}{col 25}{res}{space 2} -1623.93{col 37}{space 2}  532.472{col 48}{space 1}   -3.05{col 57}{space 3}0.002{col 65}{space 4}-2668.306{col 78}{space 3}-579.5542
+{txt}{space 20}age {c |}{col 25}{res}{space 2}-62.28616{col 37}{space 2} 44.65409{col 48}{space 1}   -1.39{col 57}{space 3}0.163{col 65}{space 4}-149.8694{col 78}{space 3} 25.29713
+{txt}{space 18}d2013 {c |}{col 25}{res}{space 2}-3116.107{col 37}{space 2} 706.8095{col 48}{space 1}   -4.41{col 57}{space 3}0.000{col 65}{space 4}-4502.423{col 78}{space 3}-1729.791
+{txt}{space 18}d2015 {c |}{col 25}{res}{space 2}-1196.237{col 37}{space 2} 866.6316{col 48}{space 1}   -1.38{col 57}{space 3}0.168{col 65}{space 4}-2896.024{col 78}{space 3} 503.5502
+{txt}{space 9}total_distance {c |}{col 25}{res}{space 2}  1071.19{col 37}{space 2} 317.6804{col 48}{space 1}    3.37{col 57}{space 3}0.001{col 65}{space 4} 448.1007{col 78}{space 3}  1694.28
+{txt}{space 18}_cons {c |}{col 25}{res}{space 2} 5376.831{col 37}{space 2} 2807.997{col 48}{space 1}    1.91{col 57}{space 3}0.056{col 65}{space 4}-130.6963{col 78}{space 3} 10884.36
+{txt}{hline 24}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 1}var(e.allreceive_total){c |}{col 25}{res}{space 2} 1.47e+08{col 37}{space 2}  5347320{col 65}{space 4} 1.37e+08{col 78}{space 3} 1.58e+08
+{txt}{hline 24}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. estimates store MonetaryTransfer
+{txt}
+{com}. 
+. 
+. tobit total_visit totalincome allincome spouse_allincome indv_pension spouse_pension liveapartnum age d2013 d2015 total_distance, ll(0)
+{res}{txt}
+Refining starting values:
+
+Grid node 0:{space 3}log likelihood = {res:-10764.318}
+
+Fitting full model:
+{res}
+{txt}Iteration 0:{space 3}log likelihood = {res:-10764.318}  
+Iteration 1:{space 3}log likelihood = {res:-10764.177}  
+Iteration 2:{space 3}log likelihood = {res:-10764.177}  
+{res}
+{txt}Tobit regression{col 49}Number of obs{col 67}= {res}     1,689
+{txt}{col 49}   Uncensored    {col 67}= {res}     1,673
+{txt}Limits: lower = {res}0{txt}{col 49}   Left-censored {col 67}= {res}        16
+{txt}        upper = {res}+inf{txt}{col 49}   Right-censored{col 67}= {res}         0
+
+{txt}{col 49}LR chi2({res}10{txt}){col 67}= {res}    713.36
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-10764.177{txt}{col 49}Pseudo R2{col 67}= {res}    0.0321
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       total_visit{col 20}{c |}      Coef.{col 32}   Std. Err.{col 44}      t{col 52}   P>|t|{col 60}     [95% Con{col 73}f. Interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}totalincome {c |}{col 20}{res}{space 2}-.0000482{col 32}{space 2} .0000556{col 43}{space 1}   -0.87{col 52}{space 3}0.386{col 60}{space 4}-.0001572{col 73}{space 3} .0000608
+{txt}{space 9}allincome {c |}{col 20}{res}{space 2} .0000612{col 32}{space 2}  .000076{col 43}{space 1}    0.81{col 52}{space 3}0.420{col 60}{space 4}-.0000878{col 73}{space 3} .0002102
+{txt}{space 2}spouse_allincome {c |}{col 20}{res}{space 2} .0002046{col 32}{space 2} .0001611{col 43}{space 1}    1.27{col 52}{space 3}0.204{col 60}{space 4}-.0001115{col 73}{space 3} .0005206
+{txt}{space 6}indv_pension {c |}{col 20}{res}{space 2}   .00195{col 32}{space 2} .0006824{col 43}{space 1}    2.86{col 52}{space 3}0.004{col 60}{space 4} .0006115{col 73}{space 3} .0032884
+{txt}{space 4}spouse_pension {c |}{col 20}{res}{space 2}-.0012785{col 32}{space 2} .0009001{col 43}{space 1}   -1.42{col 52}{space 3}0.156{col 60}{space 4}-.0030439{col 73}{space 3} .0004869
+{txt}{space 6}liveapartnum {c |}{col 20}{res}{space 2} 122.1153{col 32}{space 2} 6.533762{col 43}{space 1}   18.69{col 52}{space 3}0.000{col 60}{space 4} 109.3002{col 73}{space 3} 134.9305
+{txt}{space 15}age {c |}{col 20}{res}{space 2} 1.632479{col 32}{space 2} .5401808{col 43}{space 1}    3.02{col 52}{space 3}0.003{col 60}{space 4} .5729802{col 73}{space 3} 2.691978
+{txt}{space 13}d2013 {c |}{col 20}{res}{space 2}-118.3511{col 32}{space 2} 8.625677{col 43}{space 1}  -13.72{col 52}{space 3}0.000{col 60}{space 4}-135.2694{col 73}{space 3}-101.4329
+{txt}{space 13}d2015 {c |}{col 20}{res}{space 2}-70.36801{col 32}{space 2} 10.52818{col 43}{space 1}   -6.68{col 52}{space 3}0.000{col 60}{space 4}-91.01776{col 73}{space 3}-49.71827
+{txt}{space 4}total_distance {c |}{col 20}{res}{space 2}-53.50214{col 32}{space 2} 3.906028{col 43}{space 1}  -13.70{col 52}{space 3}0.000{col 60}{space 4}-61.16333{col 73}{space 3}-45.84094
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-62.57245{col 32}{space 2} 34.00478{col 43}{space 1}   -1.84{col 52}{space 3}0.066{col 60}{space 4}-129.2687{col 73}{space 3}  4.12378
+{txt}{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 1}var(e.total_visit){c |}{col 20}{res}{space 2} 22364.19{col 32}{space 2} 773.6071{col 60}{space 4} 20897.18{col 73}{space 3} 23934.18
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. estimates store NumberofVisits
+{txt}
+{com}. 
+. tobit allreceive_total totalincome allincome spouse_allincome indv_pension spouse_pension liveapartnum total_contact age d2013 d2015 total_distance, ll(0)
+{res}{txt}
+Refining starting values:
+
+Grid node 0:{space 3}log likelihood = {res:-16621.235}
+
+Fitting full model:
+{res}
+{txt}Iteration 0:{space 3}log likelihood = {res:-16621.235}  
+Iteration 1:{space 3}log likelihood = {res:-16607.331}  
+Iteration 2:{space 3}log likelihood = {res:-16607.159}  
+Iteration 3:{space 3}log likelihood = {res:-16607.159}  
+{res}
+{txt}Tobit regression{col 49}Number of obs{col 67}= {res}     1,689
+{txt}{col 49}   Uncensored    {col 67}= {res}     1,523
+{txt}Limits: lower = {res}0{txt}{col 49}   Left-censored {col 67}= {res}       166
+{txt}        upper = {res}+inf{txt}{col 49}   Right-censored{col 67}= {res}         0
+
+{txt}{col 49}LR chi2({res}11{txt}){col 67}= {res}    230.29
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-16607.159{txt}{col 49}Pseudo R2{col 67}= {res}    0.0069
+
+{txt}{hline 24}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       allreceive_total{col 25}{c |}      Coef.{col 37}   Std. Err.{col 49}      t{col 57}   P>|t|{col 65}     [95% Con{col 78}f. Interval]
+{hline 24}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}totalincome {c |}{col 25}{res}{space 2} .0463162{col 37}{space 2} .0045665{col 48}{space 1}   10.14{col 57}{space 3}0.000{col 65}{space 4} .0373597{col 78}{space 3} .0552728
+{txt}{space 14}allincome {c |}{col 25}{res}{space 2} .0044042{col 37}{space 2} .0061661{col 48}{space 1}    0.71{col 57}{space 3}0.475{col 65}{space 4}-.0076898{col 78}{space 3} .0164983
+{txt}{space 7}spouse_allincome {c |}{col 25}{res}{space 2}-.0150891{col 37}{space 2} .0146075{col 48}{space 1}   -1.03{col 57}{space 3}0.302{col 65}{space 4}-.0437399{col 78}{space 3} .0135618
+{txt}{space 11}indv_pension {c |}{col 25}{res}{space 2} .3651122{col 37}{space 2} .0564367{col 48}{space 1}    6.47{col 57}{space 3}0.000{col 65}{space 4} .2544184{col 78}{space 3}  .475806
+{txt}{space 9}spouse_pension {c |}{col 25}{res}{space 2}-.1356815{col 37}{space 2} .0741517{col 48}{space 1}   -1.83{col 57}{space 3}0.067{col 65}{space 4}-.2811211{col 78}{space 3} .0097582
+{txt}{space 11}liveapartnum {c |}{col 25}{res}{space 2}-1846.642{col 37}{space 2} 540.4262{col 48}{space 1}   -3.42{col 57}{space 3}0.001{col 65}{space 4}-2906.622{col 78}{space 3}-786.6613
+{txt}{space 10}total_contact {c |}{col 25}{res}{space 2}  4.23806{col 37}{space 2} 1.680874{col 48}{space 1}    2.52{col 57}{space 3}0.012{col 65}{space 4} .9412283{col 78}{space 3} 7.534891
+{txt}{space 20}age {c |}{col 25}{res}{space 2}-50.04164{col 37}{space 2} 44.94465{col 48}{space 1}   -1.11{col 57}{space 3}0.266{col 65}{space 4}-138.1951{col 78}{space 3} 38.11185
+{txt}{space 18}d2013 {c |}{col 25}{res}{space 2}-2957.061{col 37}{space 2}  709.408{col 48}{space 1}   -4.17{col 57}{space 3}0.000{col 65}{space 4}-4348.479{col 78}{space 3}-1565.643
+{txt}{space 18}d2015 {c |}{col 25}{res}{space 2}-1073.011{col 37}{space 2}  868.245{col 48}{space 1}   -1.24{col 57}{space 3}0.217{col 65}{space 4}-2775.968{col 78}{space 3} 629.9461
+{txt}{space 9}total_distance {c |}{col 25}{res}{space 2}  1123.66{col 37}{space 2}  320.359{col 48}{space 1}    3.51{col 57}{space 3}0.000{col 65}{space 4} 495.3141{col 78}{space 3} 1752.005
+{txt}{space 18}_cons {c |}{col 25}{res}{space 2} 4264.104{col 37}{space 2} 2846.715{col 48}{space 1}    1.50{col 57}{space 3}0.134{col 65}{space 4}-1319.382{col 78}{space 3} 9847.591
+{txt}{hline 24}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 1}var(e.allreceive_total){c |}{col 25}{res}{space 2} 1.47e+08{col 37}{space 2}  5353384{col 65}{space 4} 1.37e+08{col 78}{space 3} 1.58e+08
+{txt}{hline 24}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. estimates store MonetaryTransfer2
+{txt}
+{com}. 
+. tobit total_visit totalincome allincome spouse_allincome indv_pension spouse_pension liveapartnum total_contact age d2013 d2015 total_distance, ll(0)
+{res}{txt}
+Refining starting values:
+
+Grid node 0:{space 3}log likelihood = {res:-10747.131}
+
+Fitting full model:
+{res}
+{txt}Iteration 0:{space 3}log likelihood = {res:-10747.131}  
+Iteration 1:{space 3}log likelihood = {res:-10746.984}  
+Iteration 2:{space 3}log likelihood = {res:-10746.984}  
+{res}
+{txt}Tobit regression{col 49}Number of obs{col 67}= {res}     1,689
+{txt}{col 49}   Uncensored    {col 67}= {res}     1,673
+{txt}Limits: lower = {res}0{txt}{col 49}   Left-censored {col 67}= {res}        16
+{txt}        upper = {res}+inf{txt}{col 49}   Right-censored{col 67}= {res}         0
+
+{txt}{col 49}LR chi2({res}11{txt}){col 67}= {res}    747.75
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-10746.984{txt}{col 49}Pseudo R2{col 67}= {res}    0.0336
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       total_visit{col 20}{c |}      Coef.{col 32}   Std. Err.{col 44}      t{col 52}   P>|t|{col 60}     [95% Con{col 73}f. Interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}totalincome {c |}{col 20}{res}{space 2} -.000068{col 32}{space 2} .0000551{col 43}{space 1}   -1.23{col 52}{space 3}0.217{col 60}{space 4}-.0001761{col 73}{space 3} .0000401
+{txt}{space 9}allincome {c |}{col 20}{res}{space 2} .0000536{col 32}{space 2} .0000752{col 43}{space 1}    0.71{col 52}{space 3}0.476{col 60}{space 4}-.0000939{col 73}{space 3} .0002012
+{txt}{space 2}spouse_allincome {c |}{col 20}{res}{space 2} .0002123{col 32}{space 2} .0001595{col 43}{space 1}    1.33{col 52}{space 3}0.183{col 60}{space 4}-.0001006{col 73}{space 3} .0005252
+{txt}{space 6}indv_pension {c |}{col 20}{res}{space 2} .0015709{col 32}{space 2} .0006786{col 43}{space 1}    2.31{col 52}{space 3}0.021{col 60}{space 4}   .00024{col 73}{space 3} .0029019
+{txt}{space 4}spouse_pension {c |}{col 20}{res}{space 2}-.0013073{col 32}{space 2} .0008911{col 43}{space 1}   -1.47{col 52}{space 3}0.143{col 60}{space 4}-.0030551{col 73}{space 3} .0004405
+{txt}{space 6}liveapartnum {c |}{col 20}{res}{space 2} 117.2326{col 32}{space 2} 6.520822{col 43}{space 1}   17.98{col 52}{space 3}0.000{col 60}{space 4} 104.4428{col 73}{space 3} 130.0224
+{txt}{space 5}total_contact {c |}{col 20}{res}{space 2} .1198312{col 32}{space 2}  .020334{col 43}{space 1}    5.89{col 52}{space 3}0.000{col 60}{space 4} .0799485{col 73}{space 3} .1597138
+{txt}{space 15}age {c |}{col 20}{res}{space 2}  1.97039{col 32}{space 2} .5378273{col 43}{space 1}    3.66{col 52}{space 3}0.000{col 60}{space 4} .9155072{col 73}{space 3} 3.025273
+{txt}{space 13}d2013 {c |}{col 20}{res}{space 2}-114.4125{col 32}{space 2} 8.565607{col 43}{space 1}  -13.36{col 52}{space 3}0.000{col 60}{space 4}-131.2129{col 73}{space 3}-97.61208
+{txt}{space 13}d2015 {c |}{col 20}{res}{space 2}-66.46161{col 32}{space 2}   10.444{col 43}{space 1}   -6.36{col 52}{space 3}0.000{col 60}{space 4}-86.94625{col 73}{space 3}-45.97698
+{txt}{space 4}total_distance {c |}{col 20}{res}{space 2}-52.79472{col 32}{space 2} 3.868778{col 43}{space 1}  -13.65{col 52}{space 3}0.000{col 60}{space 4}-60.38286{col 73}{space 3}-45.20658
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-94.53526{col 32}{space 2} 34.09746{col 43}{space 1}   -2.77{col 52}{space 3}0.006{col 60}{space 4}-161.4133{col 73}{space 3}-27.65723
+{txt}{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 1}var(e.total_visit){c |}{col 20}{res}{space 2} 21916.94{col 32}{space 2} 758.0749{col 60}{space 4} 20479.38{col 73}{space 3} 23455.41
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. estimates store NumberofVisits2
+{txt}
+{com}. 
+. esttab MonetaryTransfer NumberofVisits MonetaryTransfer2 NumberofVisits2, se b(5) r2 star(* 0.1 ** 0.05 *** 0.01) title(Money and Visits Transfered to Parents) booktabs alignment(D{c -(}.{c )-}{c -(}.{c )-}{c -(}-1{c )-}) nodepvar 
+{res}
+\begin{c -(}table{c )-}[htbp]\centering
+\def\sym#1{c -(}\ifmmode^{c -(}#1{c )-}\else\(^{c -(}#1{c )-}\)\fi{c )-}
+\caption{c -(}Money and Visits Transfered to Parents{c )-}
+\begin{c -(}tabular{c )-}{c -(}l*{c -(}4{c )-}{c -(}D{c -(}.{c )-}{c -(}.{c )-}{c -(}-1{c )-}{c )-}{c )-}
+\toprule
+            &\multicolumn{c -(}1{c )-}{c -(}c{c )-}{c -(}(1){c )-}         &\multicolumn{c -(}1{c )-}{c -(}c{c )-}{c -(}(2){c )-}         &\multicolumn{c -(}1{c )-}{c -(}c{c )-}{c -(}(3){c )-}         &\multicolumn{c -(}1{c )-}{c -(}c{c )-}{c -(}(4){c )-}         \\
+            &MonetaryTransfer         &NumberofVisits         &MonetaryTransfer2         &NumberofVisits2         \\
+\midrule
+main        &                     &                     &                     &                     \\
+totalincome &     0.04706\sym{c -(}***{c )-}&    -0.00005         &     0.04632\sym{c -(}***{c )-}&    -0.00007         \\
+            &   (0.00455)         &   (0.00006)         &   (0.00457)         &   (0.00006)         \\
+\addlinespace
+allincome   &     0.00476         &     0.00006         &     0.00440         &     0.00005         \\
+            &   (0.00617)         &   (0.00008)         &   (0.00617)         &   (0.00008)         \\
+\addlinespace
+spouse\_allincome&    -0.01527         &     0.00020         &    -0.01509         &     0.00021         \\
+            &   (0.01458)         &   (0.00016)         &   (0.01461)         &   (0.00016)         \\
+\addlinespace
+indv\_pension&     0.37955\sym{c -(}***{c )-}&     0.00195\sym{c -(}***{c )-}&     0.36511\sym{c -(}***{c )-}&     0.00157\sym{c -(}**{c )-} \\
+            &   (0.05617)         &   (0.00068)         &   (0.05644)         &   (0.00068)         \\
+\addlinespace
+spouse\_pension&    -0.13369\sym{c -(}*{c )-}  &    -0.00128         &    -0.13568\sym{c -(}*{c )-}  &    -0.00131         \\
+            &   (0.07413)         &   (0.00090)         &   (0.07415)         &   (0.00089)         \\
+\addlinespace
+liveapartnum& -1623.92996\sym{c -(}***{c )-}&   122.11534\sym{c -(}***{c )-}& -1846.64186\sym{c -(}***{c )-}&   117.23257\sym{c -(}***{c )-}\\
+            & (532.47202)         &   (6.53376)         & (540.42624)         &   (6.52082)         \\
+\addlinespace
+age         &   -62.28616         &     1.63248\sym{c -(}***{c )-}&   -50.04164         &     1.97039\sym{c -(}***{c )-}\\
+            &  (44.65409)         &   (0.54018)         &  (44.94465)         &   (0.53783)         \\
+\addlinespace
+d2013       & -3116.10716\sym{c -(}***{c )-}&  -118.35115\sym{c -(}***{c )-}& -2957.06104\sym{c -(}***{c )-}&  -114.41248\sym{c -(}***{c )-}\\
+            & (706.80947)         &   (8.62568)         & (709.40799)         &   (8.56561)         \\
+\addlinespace
+d2015       & -1196.23689         &   -70.36801\sym{c -(}***{c )-}& -1073.01113         &   -66.46161\sym{c -(}***{c )-}\\
+            & (866.63163)         &  (10.52818)         & (868.24495)         &  (10.44400)         \\
+\addlinespace
+total\_distance&  1071.19026\sym{c -(}***{c )-}&   -53.50214\sym{c -(}***{c )-}&  1123.65952\sym{c -(}***{c )-}&   -52.79472\sym{c -(}***{c )-}\\
+            & (317.68044)         &   (3.90603)         & (320.35905)         &   (3.86878)         \\
+\addlinespace
+total\_contact&                     &                     &     4.23806\sym{c -(}**{c )-} &     0.11983\sym{c -(}***{c )-}\\
+            &                     &                     &   (1.68087)         &   (0.02033)         \\
+\addlinespace
+\_cons      &  5376.83116\sym{c -(}*{c )-}  &   -62.57245\sym{c -(}*{c )-}  &  4264.10420         &   -94.53526\sym{c -(}***{c )-}\\
+            &(2807.99738)         &  (34.00478)         &(2846.71521)         &  (34.09746)         \\
+\midrule
+/           &                     &                     &                     &                     \\
+var(e.allreceive\_total)& 1.46751e+08\sym{c -(}***{c )-}&                     & 1.46706e+08\sym{c -(}***{c )-}&                     \\
+            &(5347319.84611)         &                     &(5353383.73532)         &                     \\
+\addlinespace
+var(e.total\_visit)&                     & 22364.18671\sym{c -(}***{c )-}&                     & 21916.93851\sym{c -(}***{c )-}\\
+            &                     & (773.60714)         &                     & (758.07495)         \\
+\midrule
+\(N\)       &        1696         &        1689         &        1689         &        1689         \\
+\(R^{c -(}2{c )-}\)   &                     &                     &                     &                     \\
+\bottomrule
+\multicolumn{c -(}5{c )-}{c -(}l{c )-}{c -(}\footnotesize Standard errors in parentheses{c )-}\\
+\multicolumn{c -(}5{c )-}{c -(}l{c )-}{c -(}\footnotesize \sym{c -(}*{c )-} \(p<0.1\), \sym{c -(}**{c )-} \(p<0.05\), \sym{c -(}***{c )-} \(p<0.01\){c )-}\\
+\end{c -(}tabular{c )-}
+\end{c -(}table{c )-}
+{txt}
+{com}. 
+. esttab MonetaryTransfer NumberofVisits MonetaryTransfer2 NumberofVisits2 using reg3.tex, se b(5) ar2 star(* 0.1 ** 0.05 *** 0.01) booktabs alignment(D{c -(}.{c )-}{c -(}.{c )-}{c -(}-1{c )-}) title(Money and visits transfered to parents) nodepvar coeflabels(totalincome "Total Income of Children" allincome "Income of Respondent" spouse_allincome "Income of Spouse" indv_pension "Compensations Respondent Received" spouse_pension "Compensations Spouse Received" total_contact "Number of Contacts" _cons "Constant") nodepvar
+{res}{txt}(output written to {browse  `"reg3.tex"'})
+
+{com}. 
+. 
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\Even\Desktop\修論STATA\panel data 2011-2015_0530\panel_regression_0617.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}17 Jun 2020, 22:10:05
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
